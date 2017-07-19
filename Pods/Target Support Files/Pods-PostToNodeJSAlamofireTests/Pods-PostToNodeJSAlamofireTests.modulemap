@@ -1,0 +1,6 @@
+framework module Pods_PostToNodeJSAlamofireTests {
+  umbrella header "Pods-PostToNodeJSAlamofireTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
