@@ -63,21 +63,42 @@ exports.addOneHuman = function(req, res, err) {
 }
 
 exports.edithuman = function(req, res, err) {
-    console.log(" req.query.id" +  req.query.id);
 
-    var name = req.body.name
+    // var query = {id: req.query.id };
+    // // req.newData.username = req.user.username;
+    // FamilySchema.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
+    //     if (err) return res.send(500, { error: err });
+    //     return res.send("succesfully saved");
+    // });
 
-    FamilySchema.findOne({ id: req.query.id }, function (err, doc){
-      console.log("Human" + req.body);
 
-      console.log("req.body.name" + req.body.name);
-      console.log("human" + doc);
 
-      doc = req.body
-      doc.save()
-      res.json({doc})
-    });
+    // FamilySchema.findOne({id: req.query.id}, function(err, human) {
+    // if(!err) {
+    //     if(!human) {
+    //         human = new FamilySchema();
+    //         human.name = req.name;
+    //     }
+    //     human.save(function(err) {
+    //         if(!err) {
+    //             console.log("human " + human.name + " updated at " + Date);
+    //         }
+    //         else {
+    //             console.log("Error: could not save contact " + human.name);
+    //         }
+    //     });
+    // }
+    // });
 
+
+    FamilySchema.update({id: req.query.id }, 
+        {$set: req.body }, 
+        {upsert: true}, 
+        function(err){
+            if (err) return res.send(500, { error: err });
+            return res.send("succesfully saved");
+
+    })
 }
 
 // Create endpoint  to get tree json 
