@@ -41,7 +41,7 @@ class ViewController: UIViewController {
             "name": "ben",
             "patientID": "id1"
         ]
- */
+ 
         var human1 = NSUUID().uuidString
         var human2 = idFamily1
         var human3 = NSUUID().uuidString
@@ -81,14 +81,14 @@ class ViewController: UIViewController {
                                 print("error \(error)")
                             }
         }
+        */
         
-        
-        patient1 = NSUUID().uuidString
-        human2 = NSUUID().uuidString
-        human3 = NSUUID().uuidString
+        patient1 = "TestFamilyID"//NSUUID().uuidString
+        var human2 = "human2"//NSUUID().uuidString
+        var human3 = "human3"//NSUUID().uuidString
         
         let familyTree2: Parameters =
-            ["familyID":[
+            [patient1:[
                 patient1:
                     [
                         "id": patient1,

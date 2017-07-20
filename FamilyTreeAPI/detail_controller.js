@@ -13,13 +13,14 @@ exports.savetree = function(req, res, err) {
       // res.json(req.body)
     //     res.json(req.query)
         // res.json(req.params)
-    var response = []
-    for (var key in req.body) {
-        console.log("key "+key)
-        console.log("body "+req.body[key])
-        console.log("name "+req.body[key].name)
-
-        var currentHuman = req.body[key]
+    var familyKey =  Object.keys(req.body)[0]
+    console.log("familyKey " + familyKey)
+    var allHumans = req.body[familyKey]
+    var savedHumans = []
+    Object.keys(allHumans).forEach(key => {
+        let currentHuman = allHumans[key];
+        console.log("key " + key)
+        console.log("Name " + currentHuman.name)
 
         var familyTree = new FamilySchema({  
             name: currentHuman.name,
@@ -33,14 +34,14 @@ exports.savetree = function(req, res, err) {
                 return console.error(err);
             }
             else  {
-                response.push(details)
-                console.log("name "+req.body[key].name)
-
-                // res.json({ details })
+                console.log("Details saved "+ details)
+                savedHumans.push({ "Saved" : details })
             }
         })
+    });
 
-    }
+    res.json({savedHumans})
+
 
 }
 
