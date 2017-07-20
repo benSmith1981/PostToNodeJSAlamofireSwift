@@ -6,8 +6,8 @@ var mongoose = require('mongoose');
 var FamilySchema = new mongoose.Schema({
 
     name: String,
-    patientID: String, // "Family1",
-    id: String , //"Family1",
+    patientID: String, // "Family1", this is the id of the patient and for the family
+    id: String , //"Family1", this is unique
     modificationdate : { type: Date, default: Date.now },
     dob: String, //"1981",
     gender: String,  //"male"

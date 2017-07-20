@@ -32,7 +32,6 @@ router.get('/', function(req, res) {
   //Guesss you can check for parameters here
 })
 
-
 // ROUTES
 detailRoutes(router)
 
