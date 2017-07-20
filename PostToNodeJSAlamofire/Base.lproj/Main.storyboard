@@ -87,10 +87,18 @@
                                     <action selector="editHuman:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zhQ-Cd-hTO"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jml-on-aNE">
+                                <rect key="frame" x="244" y="617" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="editName" destination="jml-on-aNE" id="mpZ-jY-Vfi"/>
                         <outlet property="getID" destination="Kt6-9d-YTE" id="uxg-87-Owc"/>
                         <outlet property="outputLabel" destination="Nq1-d7-Cba" id="rFg-CV-R3U"/>
                         <outlet property="postID" destination="Hf3-DF-OLm" id="DyQ-VA-goH"/>

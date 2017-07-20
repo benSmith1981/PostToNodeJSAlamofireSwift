@@ -64,39 +64,18 @@ exports.addOneHuman = function(req, res, err) {
 
 exports.edithuman = function(req, res, err) {
 
-    // var query = {id: req.query.id };
-    // // req.newData.username = req.user.username;
-    // FamilySchema.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
-    //     if (err) return res.send(500, { error: err });
-    //     return res.send("succesfully saved");
-    // });
-
-
-
-    // FamilySchema.findOne({id: req.query.id}, function(err, human) {
-    // if(!err) {
-    //     if(!human) {
-    //         human = new FamilySchema();
-    //         human.name = req.name;
-    //     }
-    //     human.save(function(err) {
-    //         if(!err) {
-    //             console.log("human " + human.name + " updated at " + Date);
-    //         }
-    //         else {
-    //             console.log("Error: could not save contact " + human.name);
-    //         }
-    //     });
-    // }
-    // });
+//Contact.update({phone:request.phone}, 
+// {$set: { phone: request.phone }}, 
+// {upsert: true}, 
+// function(err){...})
 
 
     FamilySchema.update({id: req.query.id }, 
         {$set: req.body }, 
         {upsert: true}, 
-        function(err){
+        function(err, callback){
             if (err) return res.send(500, { error: err });
-            return res.send("succesfully saved");
+            return res.json(callback);
 
     })
 }

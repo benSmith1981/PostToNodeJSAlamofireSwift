@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var patient1 = ""
     @IBOutlet weak var getID: UITextField!
     @IBOutlet weak var postID: UITextField!
+    @IBOutlet weak var editName: UITextField!
+
     @IBOutlet weak var outputLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,9 +158,10 @@ class ViewController: UIViewController {
         //http://localhost:3000/api/edithuman?id=58EAC467-E69F-4B4F-8F7A-554D82F6371D
         let id = "58EAC467-E69F-4B4F-8F7A-554D82F6371D"//getID.text ?? "1"
         print(id)
-        
+        let nametochange = editName.text ?? "ben"
+
         let humanUpdate: Parameters = [
-            "name": "Santa",
+            "name": nametochange,
         ]
         Alamofire.request("http://localhost:3000/api/edithuman?id=\(id)",
                           method: .post,
