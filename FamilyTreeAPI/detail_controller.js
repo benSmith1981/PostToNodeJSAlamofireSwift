@@ -79,20 +79,36 @@ exports.edithuman = function(req, res, err) {
 exports.gettree = function(req, res, err) {
     console.log("req.query.patientID "+req.query.patientID)
 
+    var buildingString = ""
     //callback is an array
     FamilySchema.find({patientID: req.query.patientID}, function (err, callback) {
         if (err) {
             res.json({ err })
             return console.error(err);
         } else {
-            var testid = req.query.patientID
-            var id =  callback[0].id 
-            console.log("testid "+ testid)
-            console.log("id "+ id)
-            console.log("callback.id "+ callback[0].id)
+            var familyID = req.query.patientID
+            console.log("familyID "+ familyID)
+            // console.log("callback 0 "+ callback[0])
+            // console.log("callback 1 "+ callback[1])
+            // console.log("callback 2 "+ callback[2])
 
-            res.send(JSON.stringify({testid : callback }))
-            // res.json({"test" : callback})
+            for (var i = 0; i < callback.length; i++) {
+                var human = callback[i]
+                var id = callback[i].id
+                console.log("callback[i].id  "+ id)
+                // console.log("human  "+ human)
+
+                buildingString =  buildingString + '{' + id + ':' + human + '},'
+                // console.log("building json string "+ buildingString)
+                //Do something
+            }
+            buildingString = buildingString.replace(/(\r\n|\n|\r)/gm,"");
+            // buildingString = familyID + ":" + buildingString
+            // console.log("BUILTSTRING: "+ json(buildingString))
+            //res.json({familyID : buildingString})
+            res.json(callback)
+
+
         }
     })
 

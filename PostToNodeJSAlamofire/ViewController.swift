@@ -36,9 +36,9 @@ class ViewController: UIViewController {
     @IBAction func postFamily(_ sender: Any) {
         let idFamily1 = "58EAC467-E69F-4B4F-8F7A-554D82F6371D"
         
-        patient1 = "TestFamilyID"//NSUUID().uuidString
-        var human2 = "human2"//NSUUID().uuidString
-        var human3 = "human3"//NSUUID().uuidString
+        patient1 = "TestFamilyID" //NSUUID().uuidString
+        var human2 = "human2" //NSUUID().uuidString
+        var human3 = "human3" //NSUUID().uuidString
         
         let familyTree2: Parameters =
             [patient1:[
@@ -57,22 +57,24 @@ class ViewController: UIViewController {
                         "showDiseaseInfoToFamily" : true,
                         "smoker" : false,
                         "workout" : true,
-                        "partners": ["id2" , "id3"],
-                        "parents": ["id2" , "id3"],
-                        "siblings": ["id2" , "id3"],
-                        "children": ["id2" , "id3"]
+                        "partners": [],
+                        "parents": ["human2", "human3"],
+                        "siblings": [],
+                        "children": []
                 ],
                 human2:
                     [
                         "id": human2,
                         "name": "Ton",
-                        "patientID": patient1
+                        "patientID": patient1,
+                        "children": [patient1]
                 ],
                 human3:
                     [
                         "id": human3,
                         "name": "Ton",
-                        "patientID": patient1
+                        "patientID": patient1,
+                        "children": [patient1]
                 ]
             ]
         ]
