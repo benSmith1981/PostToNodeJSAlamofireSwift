@@ -35,53 +35,6 @@ class ViewController: UIViewController {
 
     @IBAction func postFamily(_ sender: Any) {
         let idFamily1 = "58EAC467-E69F-4B4F-8F7A-554D82F6371D"
-              /*
-        let parameters: Parameters = [
-            "id": id,
-            "name": "ben",
-            "patientID": "id1"
-        ]
- 
-        var human1 = NSUUID().uuidString
-        var human2 = idFamily1
-        var human3 = NSUUID().uuidString
-
-        let familyTree1: Parameters = [
-            human1:
-            [
-                "id": human1,
-                "name": "ben",
-                "patientID": human2
-            ],
-            human2:
-            [
-                 "id": human2,
-                 "name": "Ton",
-                 "patientID": human2
-            ],
-            human3:
-                [
-                    "id": human3,
-                    "name": "Ton",
-                    "patientID": human2
-            ]
-        ]
-        //http://localhost:3000/api/savetree?treeid=1&treedata=[:]
-        
-        Alamofire.request("http://localhost:3000/api/savetree/",
-                          method: .post,
-                          parameters: familyTree1,
-                          encoding: JSONEncoding.default).responseJSON { (response) in
-                            switch response.result {
-                            case .success(let jsonData):
-                                self.outputLabel.text = "Success \(jsonData)"
-                                print("Success \(jsonData)")
-                            case .failure(let error):
-                                self.outputLabel.text = "error \(error)"
-                                print("error \(error)")
-                            }
-        }
-        */
         
         patient1 = "TestFamilyID"//NSUUID().uuidString
         var human2 = "human2"//NSUUID().uuidString
@@ -92,8 +45,22 @@ class ViewController: UIViewController {
                 patient1:
                     [
                         "id": patient1,
-                        "name": "ben",
-                        "patientID": patient1
+                        "patientID": patient1,
+                        "name": "Benjamin",
+                        "dob": "10/10/198", //"1981",
+                        "gender": "male",  //"male"
+                        "twin" : true,
+                        "adopted" : true,
+                        "heightCM" : 1.83,//1.83,
+                        "weightKG" : 80,//80 ,
+                        "ethnicity" : "Caucasion",
+                        "showDiseaseInfoToFamily" : true,
+                        "smoker" : false,
+                        "workout" : true,
+                        "partners": ["id1":"id2" , "id":"id3"],
+                        "parents": ["id1":"id2" , "id":"id3"],
+                        "siblings": ["id4":"id2" , "id6":"id3"],
+                        "children": ["id5":"id2" , "id7":"id3"]
                 ],
                 human2:
                     [
@@ -126,7 +93,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func getFamily(_ sender: Any) {
-        let id = "58EAC467-E69F-4B4F-8F7A-554D82F6371D"//getID.text ?? "1"
+        let id = "TestFamilyID"//getID.text ?? "1"
         print(id)
         Alamofire.request("http://localhost:3000/api/gettree?patientID=\(id)").validate().responseJSON { (response) in
             switch response.result {
@@ -156,12 +123,32 @@ class ViewController: UIViewController {
     
     @IBAction func editHuman(_ sender: Any) {
         //http://localhost:3000/api/edithuman?id=58EAC467-E69F-4B4F-8F7A-554D82F6371D
-        let id = "58EAC467-E69F-4B4F-8F7A-554D82F6371D"//getID.text ?? "1"
+        let id = "TestFamilyID"//getID.text ?? "1"
         print(id)
         let nametochange = editName.text ?? "ben"
-
+/*
+         "id": patient1,
+         "patientID": patient1,
+         "name": "Benjamin",
+         "dob": "10/10/198", //"1981",
+         "gender": "male",  //"male"
+         "twin" : true,
+         "adopted" : true,
+         "heightCM" : 1.83,//1.83,
+         "weightKG" : 80,//80 ,
+         "ethnicity" : "Caucasion",
+         "showDiseaseInfoToFamily" : true,
+         "smoker" : false,
+         "workout" : true,
+         "partners": ["id1":"id2" , "id":"id3"],
+         "parents": ["id1":"id2" , "id":"id3"],
+         "siblings": ["id4":"id2" , "id6":"id3"],
+         "children": ["id5":"id2" , "id7":"id3"]
+ */
         let humanUpdate: Parameters = [
             "name": nametochange,
+            "dob": "10/10/198", //"1981",
+            "gender": "male"  //"male"
         ]
         Alamofire.request("http://localhost:3000/api/edithuman?id=\(id)",
                           method: .post,

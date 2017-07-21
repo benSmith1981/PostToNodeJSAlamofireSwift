@@ -8,7 +8,6 @@ var FamilySchema = new mongoose.Schema({
     name: String,
     patientID: String, // "Family1", this is the id of the patient and for the family
     id: String , //"Family1", this is unique
-    modificationdate : { type: Date, default: Date.now },
     dob: String, //"1981",
     gender: String,  //"male"
     twin : Boolean,
@@ -19,10 +18,10 @@ var FamilySchema = new mongoose.Schema({
     showDiseaseInfoToFamily : Boolean,
     smoker : Boolean,
     workout : Boolean,
-    partners: [String, String],
-    parents: [ String, String ], //[ { "id" : "id2" }, { "id" : "id3"} ],
-    siblings: [ String, String ],
-    children: [ String, String ]
+    partners: [{id: String}],
+    parents: [ {id: String }], //[ { "id" : "id2" }, { "id" : "id3"} ],
+    siblings: [ {id: String }],
+    children: [ {id: String }]
 
 })
 

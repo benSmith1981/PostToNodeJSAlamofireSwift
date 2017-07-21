@@ -22,11 +22,12 @@ exports.savetree = function(req, res, err) {
         console.log("key " + key)
         console.log("Name " + currentHuman.name)
 
-        var familyTree = new FamilySchema({  
-            name: currentHuman.name,
-            id: currentHuman.id,
-            patientID: currentHuman.patientID
-        })
+        // var familyTree = new FamilySchema({  
+        //     name: currentHuman.name,
+        //     id: currentHuman.id,
+        //     patientID: currentHuman.patientID
+        // })
+        var familyTree = new FamilySchema( currentHuman )
 
         familyTree.save(function (err, details) {
             if (err) {
@@ -35,12 +36,12 @@ exports.savetree = function(req, res, err) {
             }
             else  {
                 console.log("Details saved "+ details)
-                savedHumans.push({ "Saved" : details })
+                // savedHumans.push({ "Saved" : details })
             }
         })
     });
 
-    res.json({savedHumans})
+    // res.json({savedHumans})
 
 
 }
@@ -64,13 +65,6 @@ exports.addOneHuman = function(req, res, err) {
 }
 
 exports.edithuman = function(req, res, err) {
-
-//Contact.update({phone:request.phone}, 
-// {$set: { phone: request.phone }}, 
-// {upsert: true}, 
-// function(err){...})
-
-
     FamilySchema.update({id: req.query.id }, 
         {$set: req.body }, 
         {upsert: true}, 
@@ -89,7 +83,9 @@ exports.gettree = function(req, res, err) {
             res.json({ err })
             return console.error(err);
         } else {
-            res.json(callback)
+            var testid = req.query.patientID
+            res.send(JSON.stringify({testid: { callback }}, "success"))
+            // res.json({"test" : callback})
         }
     })
 
