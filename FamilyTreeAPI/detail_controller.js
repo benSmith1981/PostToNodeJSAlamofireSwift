@@ -78,13 +78,20 @@ exports.edithuman = function(req, res, err) {
 // Create endpoint  to get tree json 
 exports.gettree = function(req, res, err) {
     console.log("req.query.patientID "+req.query.patientID)
+
+    //callback is an array
     FamilySchema.find({patientID: req.query.patientID}, function (err, callback) {
         if (err) {
             res.json({ err })
             return console.error(err);
         } else {
             var testid = req.query.patientID
-            res.send(JSON.stringify({testid: { callback }}, "success"))
+            var id =  callback[0].id 
+            console.log("testid "+ testid)
+            console.log("id "+ id)
+            console.log("callback.id "+ callback[0].id)
+
+            res.send(JSON.stringify({testid : callback }))
             // res.json({"test" : callback})
         }
     })
