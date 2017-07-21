@@ -18,10 +18,10 @@ var FamilySchema = new mongoose.Schema({
     showDiseaseInfoToFamily : Boolean,
     smoker : Boolean,
     workout : Boolean,
-    partners: [{id: String}],
-    parents: [ {id: String }], //[ { "id" : "id2" }, { "id" : "id3"} ],
-    siblings: [ {id: String }],
-    children: [ {id: String }]
+    partners: [ String],
+    parents: [  String ], //[ { "id" : "id2" }, { "id" : "id3"} ],
+    siblings: [ String ],
+    children: [ String ]
 
 })
 

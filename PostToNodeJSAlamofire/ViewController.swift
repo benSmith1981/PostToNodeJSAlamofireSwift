@@ -57,10 +57,10 @@ class ViewController: UIViewController {
                         "showDiseaseInfoToFamily" : true,
                         "smoker" : false,
                         "workout" : true,
-                        "partners": ["id1":"id2" , "id":"id3"],
-                        "parents": ["id1":"id2" , "id":"id3"],
-                        "siblings": ["id4":"id2" , "id6":"id3"],
-                        "children": ["id5":"id2" , "id7":"id3"]
+                        "partners": ["id2" , "id3"],
+                        "parents": ["id2" , "id3"],
+                        "siblings": ["id2" , "id3"],
+                        "children": ["id2" , "id3"]
                 ],
                 human2:
                     [
