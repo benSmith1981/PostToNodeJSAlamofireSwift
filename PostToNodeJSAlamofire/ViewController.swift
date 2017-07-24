@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         ]
  
 
-        Alamofire.request("http://localhost:3000/api/savetree/",
+        Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/savetree/",
                           method: .post,
                           parameters: familyTree2,
                           encoding: JSONEncoding.default).responseJSON { (response) in
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
     @IBAction func getFamily(_ sender: Any) {
         let id = "TestFamilyID"//getID.text ?? "1"
         print(id)
-        Alamofire.request("http://localhost:3000/api/gettree?patientID=\(id)").validate().responseJSON { (response) in
+        Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/gettree?patientID=\(id)").validate().responseJSON { (response) in
             switch response.result {
             case .success(let jsonData):
                 if let jsonArray = response.result.value as? NSArray {
@@ -152,7 +152,7 @@ class ViewController: UIViewController {
             "dob": "10/10/198", //"1981",
             "gender": "male"  //"male"
         ]
-        Alamofire.request("http://localhost:3000/api/edithuman?id=\(id)",
+        Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/edithuman?id=\(id)",
                           method: .post,
                           parameters: humanUpdate,
                           encoding: JSONEncoding.default).responseJSON { (response) in
